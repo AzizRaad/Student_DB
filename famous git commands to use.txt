@@ -4,7 +4,7 @@ to upload your part of work:
 
 2- git commit -m "comment with changes you made"
 
-3- git push origin master
+3- git push origin 
 
 
 
