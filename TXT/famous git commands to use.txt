@@ -7,6 +7,12 @@ to upload your part of work:
 3- git push origin 
 
 
+To undo "add" command
+git restore --staged <file_name>
+
+
+to undo "commit" command
+git reset --soft HEAD^
 
 
 To download the files from remote repo to your device:
