@@ -9,6 +9,20 @@ to upload your part of work:
 
 
 
-To download the files on remote repo to your device:
+To download the files from remote repo to your device:
 
 1- git pull origin
+
+
+Create new branch using CMD from your device
+1- make sure you are in the right directory 
+2- use: 
+	git chechkout -b <branch_name>
+
+
+To see branchs available on your device
+	git branch 
+
+To switch between your branches 
+	git switch <branch_name>
+	git checkout <branch_name>
