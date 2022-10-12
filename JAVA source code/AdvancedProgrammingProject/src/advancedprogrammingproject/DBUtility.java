@@ -54,13 +54,14 @@ public class DBUtility {
 
         // printing the result
         if (printResult.isBeforeFirst()) { //checks if there is records returned
-            System.out.printf("%-5s %-40s %-15s %-5s %n", "ID", "FullName", "BirthOfDate", "GPA");
-            System.out.println("------------------------------------------------------------");
+            System.out.println("--------------------------------------------------------------------------");
+            System.out.printf("| %-5s| %-40s| %-15s| %-5s|%n", "ID", "FullName", "BirthOfDate", "GPA");
+            System.out.println("--------------------------------------------------------------------------");
             while (printResult.next()) {
-                System.out.printf("%-5s %-40s %-15s %-5s %n",
+                System.out.printf("| %-5s| %-40s| %-15s| %-5s|%n",
                         printResult.getInt(1), printResult.getString(2), printResult.getDate(3), printResult.getDouble(4));
             }
-            System.out.println("------------------------------------------------------------");
+            System.out.println("--------------------------------------------------------------------------");
         } else {//did not fount any match in the data exception
             System.out.println("There are NO records in the database !!");
         }
@@ -79,14 +80,15 @@ public class DBUtility {
         ResultSet searchResult = statement.executeQuery();
 
         // handling not found records exception
-        if (searchResult.isBeforeFirst()) {//checks if there is records returned
-            System.out.printf("%-5s %-40s %-15s %-5s %n", "ID", "FullName", "BirthOfDate", "GPA");
-            System.out.println("------------------------------------------------------------");
-            while (searchResult.next()) {// printin the found records
-                System.out.printf("%-5s %-40s %-15s %-5s %n",
+        if (searchResult.isBeforeFirst()) { //checks if there is records returned
+            System.out.println("--------------------------------------------------------------------------");
+            System.out.printf("| %-5s| %-40s| %-15s| %-5s|%n", "ID", "FullName", "BirthOfDate", "GPA");
+            System.out.println("--------------------------------------------------------------------------");
+            while (searchResult.next()) {
+                System.out.printf("| %-5s| %-40s| %-15s| %-5s|%n",
                         searchResult.getInt(1), searchResult.getString(2), searchResult.getDate(3), searchResult.getDouble(4));
             }
-            System.out.println("------------------------------------------------------------");
+            System.out.println("--------------------------------------------------------------------------");
         } else {
             System.out.println("No Records found for the name '" + fullname + "'");
         }
@@ -97,7 +99,7 @@ public class DBUtility {
     }// end of searchByName Method
 
     public static String readName() {
-        System.out.print("Enter Full Name: ");
+        System.out.print("Enter Full Name ---> ");
         // constructin the regular expression to check the format and valditiy of the input with it
         String Name_Pattern = "[A-Za-z ]{3,40}";
         String name = input.nextLine();
@@ -114,7 +116,7 @@ public class DBUtility {
     }// end of readName method
 
     public static String readDate() {
-        System.out.print("Enter birth date in yyyy-mm-dd form: ");
+        System.out.print("Enter birth date in yyyy-mm-dd form ---> ");
         String date = input.nextLine();
         // constructin the regular expression to check the format and valditiy of the input with it
         String DATE_PATTERN = "((18|19|20)[0-9]{2}[-](0?[13578]|1[02])[-](0?[1-9]|[12][0-9]|3[01]))|"
@@ -136,7 +138,7 @@ public class DBUtility {
     }// end of readDate method
 
     public static String readGPA() {
-        System.out.print("Enter student GPA \"must be between 0.00 to 4.00\": ");
+        System.out.print("Enter student GPA \"must be between 0.00 to 4.00\" ---> ");
         // constructin the regular expression to check the format and valditiy of the input with it
         String GPA_Pattern = "[4](.[0]+)?|([0-3])([.][0-9]+)?";
         String GPA = input.nextLine();

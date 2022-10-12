@@ -50,11 +50,12 @@ public class AdvancedProgrammingProject {
     }// end of main method
 
     public static void printMenu() {
+        System.out.println("\n");
         System.out.println("Please choose from the menu below:");
         System.out.println("1. add a student");
         System.out.println("2. Read All Student Records");
         System.out.println("3. Search For a Student By Name");
         System.out.println("4. Exit");
         System.out.print("Your Option: ");
-    }// end of printMEnu Method
+    }// end of printMenu Method
 }//end of class
