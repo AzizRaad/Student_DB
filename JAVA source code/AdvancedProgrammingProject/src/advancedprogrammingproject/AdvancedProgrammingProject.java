@@ -1,5 +1,6 @@
 package advancedprogrammingproject;
 
+import java.io.IOException;
 import java.util.Scanner;
 import java.sql.*;
 
@@ -9,45 +10,51 @@ import java.sql.*;
  */
 public class AdvancedProgrammingProject {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, IOException {
         // Welcoming message to program
-        System.out.println("\t\t---{Project Done By: Abdulaziz Alamoudi + Abdulaziz Bahamid}---\n");
+        System.out.println("\t\t\t\t{ Welcome to Students DBMS }");
+        System.out.println("\t\t{Project Done By: Abdulaziz Alamoudi + Abdulaziz Bahamid}---\n");
         Scanner input = new Scanner(System.in);
         String choice;
-        do {
+        
+        do { // entering the menu loop till the user choses the number 4
             printMenu();
-            choice = input.next();
-            switch (choice) {
+            choice = input.nextLine();
+            switch (choice) { 
                 case "1":
-                    String name = DBUtility.checkName();
-                    String date = DBUtility.checkDate();
-                    double GPA = input.nextDouble();
+                    String name = DBUtility.readName();
+                    String date = DBUtility.readDate();
+                    String GPA = DBUtility.readGPA();
                     DBUtility.addRecord(name, date, GPA);
                     break;
+                    
                 case "2":
                     DBUtility.readAllRecords();
                     break;
+                    
                 case "3":
-                    System.out.println("Enter student name:");
-                    String fullname = input.next();
+                    System.out.print("Enter student name: ");
+                    String fullname = input.nextLine();
                     DBUtility.searchByName(fullname);
                     break;
+                    
                 case "4":
                     System.out.println(" -- Thanks for using our Students DBMS -- ");
                     break;
+                    
                 default:
                     System.out.println("Sorry Wrong input !!");
                     System.out.println("Try Again");
             }// end of swtich case
-        } while (choice != "4");
+        } while (!choice.equals("4"));
     }// end of main method
 
     public static void printMenu() {
-        System.out.println("{Welcome to Students DBMS }");
+        System.out.println("Please choose from the menu below:");
         System.out.println("1. add a student");
         System.out.println("2. Read All Student Records");
         System.out.println("3. Search For a Student By Name");
         System.out.println("4. Exit");
-        System.out.println("Choose An Osption: ");
+        System.out.print("Your Option: ");
     }// end of printMEnu Method
 }//end of class
