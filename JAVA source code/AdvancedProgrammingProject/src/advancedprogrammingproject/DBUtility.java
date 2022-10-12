@@ -54,10 +54,10 @@ public class DBUtility {
 
         // printing the result
         if (printResult.isBeforeFirst()) { //checks if there is records returned
-            System.out.printf("%-5s %-15s %-15s %-5s %n", "ID", "FullName", "BirthOfDate", "GPA");
+            System.out.printf("%-5s %-40s %-15s %-5s %n", "ID", "FullName", "BirthOfDate", "GPA");
             System.out.println("------------------------------------------------------------");
             while (printResult.next()) {
-                System.out.printf("%-5s %-15s %-15s %-5s %n",
+                System.out.printf("%-5s %-40s %-15s %-5s %n",
                         printResult.getInt(1), printResult.getString(2), printResult.getDate(3), printResult.getDouble(4));
             }
             System.out.println("------------------------------------------------------------");
@@ -80,10 +80,10 @@ public class DBUtility {
 
         // handling not found records exception
         if (searchResult.isBeforeFirst()) {//checks if there is records returned
-            System.out.printf("%-5s %-15s %-15s %-5s %n", "ID", "FullName", "BirthOfDate", "GPA");
+            System.out.printf("%-5s %-40s %-15s %-5s %n", "ID", "FullName", "BirthOfDate", "GPA");
             System.out.println("------------------------------------------------------------");
             while (searchResult.next()) {// printin the found records
-                System.out.printf("%-5s %-15s %-15s %-5s %n",
+                System.out.printf("%-5s %-40s %-15s %-5s %n",
                         searchResult.getInt(1), searchResult.getString(2), searchResult.getDate(3), searchResult.getDouble(4));
             }
             System.out.println("------------------------------------------------------------");
@@ -110,8 +110,8 @@ public class DBUtility {
             }
             name = readName(); // keeps recalling the same method till receive a valid input
         }
-        return name;
-    }// end of checkName method
+        return name.trim();// we used the trim method to delete the leading and finsihing spaces in the name
+    }// end of readName method
 
     public static String readDate() {
         System.out.print("Enter birth date in yyyy-mm-dd form: ");
@@ -133,12 +133,12 @@ public class DBUtility {
         }
 
         return date;
-    }// end of checkDate method
+    }// end of readDate method
 
     public static String readGPA() {
         System.out.print("Enter student GPA \"must be between 0.00 to 4.00\": ");
         // constructin the regular expression to check the format and valditiy of the input with it
-        String GPA_Pattern = "[4](.[0]+)?|([0-3])+([.][0-9]+)?";
+        String GPA_Pattern = "[4](.[0]+)?|([0-3])([.][0-9]+)?";
         String GPA = input.nextLine();
 
         if (!GPA.matches(GPA_Pattern)) { //matching the input with the regular expression
@@ -146,5 +146,5 @@ public class DBUtility {
             GPA = readGPA(); // keeps recalling the same method till receive a valid input
         }
         return GPA;
-    }// end of checkGPA method
+    }// end of readGPA method
 }// end of DBUtility Class
