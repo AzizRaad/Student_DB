@@ -148,8 +148,7 @@ public class DBUtility {
             System.out.println("the input you entred wasn't a number!!");
             GPA = readGPA();// keeps recalling the same method till receive a valid input
         }
-
-        if (GPA >= 0 && GPA >= 4) { //mcheck if the GPA is in the valid range
+        if (GPA < 0 | GPA > 4) { // check if the entred GPA is invalid
             System.out.println("please enter a GPA between 0.00 to 4.00 !!");
             GPA = readGPA(); // keeps recalling the same method till receive a valid input
         }

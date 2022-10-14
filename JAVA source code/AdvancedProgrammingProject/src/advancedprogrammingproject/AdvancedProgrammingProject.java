@@ -14,8 +14,8 @@ public class AdvancedProgrammingProject {
         // Welcoming message to program
         System.out.println("\t\t\t\t{ Welcome to Students DBMS }");
         System.out.println("\t\t\t\t\tProject Done By:");
-        System.out.println("\t\t\t\t--Abdulaziz Alamoudi (رقمك الجامعي ياعمدة)");
-        System.out.println("\t\t\t\t--Abdulaziz Bahamid 441016576");
+        System.out.println("\t\t\t\t--Abdulaziz Alamoudi 441016500");
+        System.out.println("\t\t\t\t--Abdulaziz Bahamid  441016576");
         Scanner input = new Scanner(System.in);
         String choice;
         
@@ -25,7 +25,7 @@ public class AdvancedProgrammingProject {
             try{
             switch (choice) { 
                 case "1":
-                    String name = DBUtility.readName("Enter full name --->");
+                    String name = DBUtility.readName("Enter full name ---> ");
                     String date = DBUtility.readDate();
                     double GPA = DBUtility.readGPA();
                     DBUtility.addRecord(name, date, GPA);
@@ -36,7 +36,7 @@ public class AdvancedProgrammingProject {
                     break;
                     
                 case "3":
-                    String fullname = DBUtility.readName("Enter a name to search --->");
+                    String fullname = DBUtility.readName("Enter a name to search ---> ");
                     DBUtility.searchByName(fullname);
                     break;
                     
