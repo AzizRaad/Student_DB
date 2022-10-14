@@ -20,6 +20,7 @@ public class AdvancedProgrammingProject {
         do { // entering the menu loop till the user choses the number 4
             printMenu();
             choice = input.nextLine();
+            try{
             switch (choice) { 
                 case "1":
                     String name = DBUtility.readName();
@@ -45,6 +46,9 @@ public class AdvancedProgrammingProject {
                 default:
                     System.out.println("Sorry Wrong input !!");
                     System.out.println("Try Again");
+                    }
+            } catch(Exception e){
+                    System.out.println("Something went wrong please try again!!");
             }// end of swtich case
         } while (!choice.equals("4"));
     }// end of main method
