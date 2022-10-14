@@ -28,7 +28,7 @@ public class DBUtility {
         return DriverManager.getConnection(config.getProperty("DBUrl"), config.getProperty("user"), config.getProperty("password"));
     }// end of getConnection method
 
-    public static void addRecord(String name, String date, String GPA) throws SQLException, IOException {
+    public static void addRecord(String name, String date, double GPA) throws SQLException, IOException {
         // cunstructing the query and connect to the database
         String insertquery = "insert into StudentsTBL_abdulaziz_abdulaziz(FullName,DateOfBirth,GPA) values(?,?,?)";
         Connection connection = getConnection();
@@ -36,7 +36,7 @@ public class DBUtility {
         
         statement.setString(1, name);
         statement.setDate(2, java.sql.Date.valueOf(date));
-        statement.setDouble(3, Double.parseDouble(GPA));
+        statement.setDouble(3, GPA);
         statement.execute();
         System.out.println("\t++info added successfully++\n");
         
@@ -98,8 +98,8 @@ public class DBUtility {
         connection.close();
     }// end of searchByName Method
 
-    public static String readName() {
-        System.out.print("Enter Full Name ---> ");
+    public static String readName(String text) {
+        System.out.print(text);
         // constructin the regular expression to check the format and valditiy of the input with it
         String Name_Pattern = "[A-Za-z ]{3,40}";
         String name = input.nextLine();
@@ -110,7 +110,7 @@ public class DBUtility {
             } else {
                 System.out.println("please just enter characters not numbers !!");
             }
-            name = readName(); // keeps recalling the same method till receive a valid input
+            name = readName(text); // keeps recalling the same method till receive a valid input
         }
         return name.trim();// we used the trim method to delete the leading and finsihing spaces in the name
     }// end of readName method
@@ -137,13 +137,18 @@ public class DBUtility {
         return date;
     }// end of readDate method
 
-    public static String readGPA() {
-        System.out.print("Enter student GPA \"must be between 0.00 to 4.00\" ---> ");
-        // constructin the regular expression to check the format and valditiy of the input with it
-        String GPA_Pattern = "[4](.[0]+)?|([0-3])([.][0-9]+)?";
-        String GPA = input.nextLine();
+    public static double readGPA() {
+        //we take the user input as double
+        double GPA;
+        try{
+            System.out.print("Enter student GPA \"must be between 0.00 to 4.00\" ---> ");
+            GPA = input.nextDouble();
+        } catch(Exception e){// catch if the user entred something other than number
+            System.out.println("the input you entred wasn't a number!!");
+            GPA = readGPA();// keeps recalling the same method till receive a valid input
+        }
 
-        if (!GPA.matches(GPA_Pattern)) { //matching the input with the regular expression
+        if (GPA >= 0 && GPA >= 4) { //mcheck if the GPA is in the valid range
             System.out.println("please enter a GPA between 0.00 to 4.00 !!");
             GPA = readGPA(); // keeps recalling the same method till receive a valid input
         }

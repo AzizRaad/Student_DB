@@ -13,7 +13,9 @@ public class AdvancedProgrammingProject {
     public static void main(String[] args) throws SQLException, IOException {
         // Welcoming message to program
         System.out.println("\t\t\t\t{ Welcome to Students DBMS }");
-        System.out.println("\t\t{Project Done By: Abdulaziz Alamoudi + Abdulaziz Bahamid}---\n");
+        System.out.println("\t\t\t\t\tProject Done By:");
+        System.out.println("\t\t\t\t--Abdulaziz Alamoudi (رقمك الجامعي ياعمدة)");
+        System.out.println("\t\t\t\t--Abdulaziz Bahamid 441016576");
         Scanner input = new Scanner(System.in);
         String choice;
         
@@ -23,9 +25,9 @@ public class AdvancedProgrammingProject {
             try{
             switch (choice) { 
                 case "1":
-                    String name = DBUtility.readName();
+                    String name = DBUtility.readName("Enter full name --->");
                     String date = DBUtility.readDate();
-                    String GPA = DBUtility.readGPA();
+                    double GPA = DBUtility.readGPA();
                     DBUtility.addRecord(name, date, GPA);
                     break;
                     
@@ -34,8 +36,7 @@ public class AdvancedProgrammingProject {
                     break;
                     
                 case "3":
-                    System.out.print("Enter student name: ");
-                    String fullname = input.nextLine();
+                    String fullname = DBUtility.readName("Enter a name to search --->");
                     DBUtility.searchByName(fullname);
                     break;
                     
@@ -47,8 +48,9 @@ public class AdvancedProgrammingProject {
                     System.out.println("Sorry Wrong input !!");
                     System.out.println("Try Again");
                     }
-            } catch(Exception e){
+            } catch(Exception Error){
                     System.out.println("Something went wrong please try again!!");
+                    System.out.println("the ERROR was: " + Error);
             }// end of swtich case
         } while (!choice.equals("4"));
     }// end of main method
