@@ -76,7 +76,7 @@ public class DBUtility {
         String searchquery = "select * from StudentsTBL_abdulaziz_abdulaziz where fullName like ? ";
         Connection connection = getConnection();
         PreparedStatement statement = connection.prepareStatement(searchquery);
-        fullname = "%" + fullname + "%";
+        fullname = "%" + fullname + "%"; // there is an error when we isnert the '%' in the query so we adding it her
         statement.setString(1, fullname);
         ResultSet searchResult = statement.executeQuery();
 
