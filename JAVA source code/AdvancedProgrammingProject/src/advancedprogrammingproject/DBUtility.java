@@ -73,9 +73,10 @@ public class DBUtility {
 
     public static void searchByName(String fullname) throws SQLException, IOException {
         // cunstructing the query and connect to the database
-        String searchquery = "select * from StudentsTBL_abdulaziz_abdulaziz where fullName = ? ";
+        String searchquery = "select * from StudentsTBL_abdulaziz_abdulaziz where fullName like ? ";
         Connection connection = getConnection();
         PreparedStatement statement = connection.prepareStatement(searchquery);
+        fullname = "%" + fullname + "%";
         statement.setString(1, fullname);
         ResultSet searchResult = statement.executeQuery();
 
