@@ -2,11 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Aziz/Documents/NetBeansProjects/AdvancedProgrammingProject/src/advancedprogrammingproject/AdvancedProgrammingProject.java</file>
-        </group>
         <group name="NetBeansProjects">
+            <file>file:/C:/Users/Aziz/Dropbox/PC/Documents/NetBeansProjects/AdvancedProgrammingProject/src/advancedprogrammingproject/DBUtility.java</file>
             <file>file:/C:/Users/Aziz/Dropbox/PC/Documents/NetBeansProjects/AdvancedProgrammingProject/src/advancedprogrammingproject/AdvancedProgrammingProject.java</file>
+        </group>
+        <group>
+            <file>file:/D:/side%20projects/Student_DB/JAVA%20source%20code/AdvancedProgrammingProject/src/advancedprogrammingproject/AdvancedProgrammingProject.java</file>
+            <file>file:/D:/side%20projects/Student_DB/JAVA%20source%20code/AdvancedProgrammingProject/src/advancedprogrammingproject/DBUtility.java</file>
         </group>
     </open-files>
 </project-private>
