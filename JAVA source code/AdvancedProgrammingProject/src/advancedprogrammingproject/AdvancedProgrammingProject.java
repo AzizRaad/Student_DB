@@ -27,7 +27,7 @@ public class AdvancedProgrammingProject {
                 case "1":
                     String name = DBUtility.readName("\t\tEnter full name ---> ");
                     String date = DBUtility.readDate();
-                    double GPA = DBUtility.readGPA();
+                    String GPA = DBUtility.readGPA();
                     DBUtility.addRecord(name, date, GPA);
                     break;
                     

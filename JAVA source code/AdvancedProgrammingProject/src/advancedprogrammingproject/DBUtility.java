@@ -29,7 +29,7 @@ public class DBUtility {
         return DriverManager.getConnection(config.getProperty("DBUrl"), config.getProperty("user"), config.getProperty("password"));
     }// end of getConnection method
 
-    public static void addRecord(String name, String date, double GPA) throws SQLException, IOException {
+    public static void addRecord(String name, String date, String GPA) throws SQLException, IOException {
         // cunstructing the query and connect to the database
         String insertquery = "insert into StudentsTBL_abdulaziz_abdulaziz(FullName,DateOfBirth,GPA) values(?,?,?)";
         Connection connection = getConnection();
@@ -37,7 +37,7 @@ public class DBUtility {
         
         statement.setString(1, name);
         statement.setDate(2, java.sql.Date.valueOf(date));
-        statement.setDouble(3, GPA);
+        statement.setDouble(3, Double.parseDouble(GPA));
         statement.execute();
         System.out.println("\t\t\t++info added successfully++\n");
         
@@ -138,18 +138,15 @@ public class DBUtility {
         return date;
     }// end of readDate method
 
-    public static double readGPA() {
+    public static String readGPA() {
         //we take the user input as double
-        double GPA;
-        try{
-            System.out.print("\t\tEnter student GPA \"must be between 0.00 to 4.00\" ---> ");
-            GPA = input.nextDouble();
-        } catch(Exception e){// catch if the user entred something other than number
-            System.out.println("\t\tthe input you entred wasn't a number!!");
-            GPA = readGPA();// keeps recalling the same method till receive a valid input
-        }
-        if (GPA < 0 | GPA > 4) { // check if the entred GPA is invalid
-            System.out.println("\t\tplease enter a GPA between 0.00 to 4.00 !!");
+        System.out.print("Enter student GPA \"must be between 0.00 to 4.00\" ---> ");
+        // constructin the regular expression to check the format and valditiy of the input with it
+        String GPA_Pattern = "[4](.[0]+)?|([0-3])([.][0-9]+)?";
+        String GPA = input.nextLine();
+
+        if (!GPA.matches(GPA_Pattern)) { //matching the input with the regular expression
+            System.out.println("please enter a GPA between 0.00 to 4.00 !!");
             GPA = readGPA(); // keeps recalling the same method till receive a valid input
         }
         return GPA;
